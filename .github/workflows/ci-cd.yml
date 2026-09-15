@@ -33,6 +33,5 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - uses: azure/webapps-deploy@v3
         with:
-          app-name: app-orderflow-vivek
-          slot-name: staging
+          app-name: app-orderflow-vivek       
           package: ./publish
