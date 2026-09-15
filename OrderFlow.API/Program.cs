@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
 using OrderFlow.Application.Orders;
 using OrderFlow.Domain.Interfaces;
@@ -5,6 +6,12 @@ using OrderFlow.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (!builder.Environment.IsDevelopment() || builder.Configuration.GetValue<bool>("UseKeyVaultLocally"))
+{
+    builder.Configuration.AddAzureKeyVault(
+    new Uri("https://kv-orderflow-vivek.vault.azure.net/"),
+    new DefaultAzureCredential());
+}
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,12 +27,10 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.MapOpenApi();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
