@@ -5,6 +5,7 @@ using System.Text;
 
 namespace OrderFlow.Domain.Tests
 {
+    //test class for Order entity
     public class OrderTests
     {
         [Fact]
