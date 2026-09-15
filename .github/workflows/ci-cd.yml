@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-      - run: dotnet publish src/OrderFlow.Api/OrderFlow.Api.csproj -c Release -o ./publish
+      - run: dotnet publish OrderFlow.Api/OrderFlow.Api.csproj -c Release -o ./publish
       - uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
