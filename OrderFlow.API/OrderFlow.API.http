@@ -1,0 +1,11 @@
+@OrderFlow.API_HostAddress = http://localhost:5041
+
+GET {{OrderFlow.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{OrderFlow.API_HostAddress}}/TestAPI/
+Accept: application/json
+
+###
