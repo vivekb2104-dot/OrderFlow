@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Azure.Messaging.ServiceBus;
 using Microsoft.EntityFrameworkCore;
 using OrderFlow.Application.Orders;
 using OrderFlow.Domain.Interfaces;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<PlaceOrderHandler>();
 builder.Services.AddDbContext<OrderFlowDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("OrderFlowDb")));
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddSingleton(new ServiceBusClient("order-confirmed.servicebus.windows.net", new DefaultAzureCredential()));
 builder.Services.AddScoped<IOrderConfirmedPublisher, OrderConfirmedPublisher>();
 
 
