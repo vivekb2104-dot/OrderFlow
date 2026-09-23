@@ -8,10 +8,21 @@ namespace OrderFlow.Application.Orders
 {
     public record PlaceOrderCommand(string CustomerId, List<OrderLineInput> Lines);
     public record OrderLineInput(string ProductId, int Quantity, decimal UnitPrice);
+
+    public interface IOrderConfirmedPublisher
+    {
+        Task PublishAsync(Guid orderId, string customerId);
+    }
+
     public class PlaceOrderHandler
     {
         private readonly IOrderRepository _repository;
-        public PlaceOrderHandler(IOrderRepository repository) => _repository = repository;
+        private readonly IOrderConfirmedPublisher _publisher;
+        public PlaceOrderHandler(IOrderRepository repository, IOrderConfirmedPublisher publisher)
+        {
+            _repository = repository;
+            _publisher = publisher;
+        }
         public async Task<Guid> HandleAsync(PlaceOrderCommand command)
         {
             var order = Order.Create(command.CustomerId);
@@ -20,6 +31,7 @@ namespace OrderFlow.Application.Orders
             order.Confirm();
             await _repository.AddAsync(order);
             await _repository.SaveChangesAsync();
+            await _publisher.PublishAsync(order.Id, order.CustomerId);
             return order.Id;
         }
     }

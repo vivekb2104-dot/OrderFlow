@@ -8,4 +8,5 @@
   <Folder Name="/tests/">
     <Project Path="OrderFlow.Domain.Tests/OrderFlow.Domain.Tests.csproj" Id="17d0a4a3-8f6b-44dd-81e6-2a1ba56a2515" />
   </Folder>
+  <Project Path="OrderFlow.Functions.OrderConfirmation/OrderFlow.Functions.OrderConfirmation.csproj" Id="e12e23d8-2c6e-4573-b3ce-d80816f0eb00" />
 </Solution>

@@ -2,6 +2,7 @@ using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
 using OrderFlow.Application.Orders;
 using OrderFlow.Domain.Interfaces;
+using OrderFlow.Infrastructure.Messaging;
 using OrderFlow.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddScoped<PlaceOrderHandler>();
 builder.Services.AddDbContext<OrderFlowDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("OrderFlowDb")));
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderConfirmedPublisher, OrderConfirmedPublisher>();
 
 
 var app = builder.Build();
