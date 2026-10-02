@@ -14,7 +14,7 @@ if (!builder.Environment.IsDevelopment() || builder.Configuration.GetValue<bool>
     new Uri("https://kv-orderflow-vivek.vault.azure.net/"),
     new DefaultAzureCredential());
 }
-// Add services to the container.
+
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
