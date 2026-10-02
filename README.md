@@ -1,6 +1,6 @@
 # OrderFlow
 
-[![CI/CD](https://github.com/<your-username>/OrderFlow/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/<your-username>/OrderFlow/actions/workflows/ci-cd.yml)
+[![CI/CD](https://github.com/vivekb2104-dot/OrderFlow/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/<your-username>/OrderFlow/actions/workflows/ci-cd.yml)
 
 A cloud-native **order management system** built with **.NET and Azure**. It started as a modular monolith with Domain-Driven Design and was then extended step by step with CI/CD, messaging, containers and a React front end.
 
