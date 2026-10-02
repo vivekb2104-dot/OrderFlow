@@ -27,6 +27,14 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddSingleton(new ServiceBusClient("order-confirmed.servicebus.windows.net", new DefaultAzureCredential()));
 builder.Services.AddScoped<IOrderConfirmedPublisher, OrderConfirmedPublisher>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrderFlowWeb", policy =>
+    policy.WithOrigins("http://localhost:5173", "https://localhost:5173")
+    .AllowAnyHeader()
+    .AllowAnyMethod());
+});
+
 
 var app = builder.Build();
 
@@ -37,7 +45,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowOrderFlowWeb");
 app.UseAuthorization();
 
 app.MapControllers();

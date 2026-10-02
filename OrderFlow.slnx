@@ -4,6 +4,10 @@
     <Project Path="OrderFlow.Application/OrderFlow.Application.csproj" />
     <Project Path="OrderFlow.Domain/OrderFlow.Domain.csproj" />
     <Project Path="OrderFlow.Infrastructure/OrderFlow.Infrastructure.csproj" />
+    <Project Path="OrderFlow.Web/orderflow.web.esproj">
+      <Build />
+      <Deploy />
+    </Project>
   </Folder>
   <Folder Name="/tests/">
     <Project Path="OrderFlow.Domain.Tests/OrderFlow.Domain.Tests.csproj" Id="17d0a4a3-8f6b-44dd-81e6-2a1ba56a2515" />

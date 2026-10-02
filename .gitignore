@@ -363,3 +363,9 @@ MigrationBackup/
 FodyWeavers.xsd
 
 appsettings.Development.json
+local.settings.json
+.env
+*.pubxml
+*.pubxml.user
+*.user
+node_modules/
